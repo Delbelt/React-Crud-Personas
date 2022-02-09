@@ -1,7 +1,7 @@
 import React from 'react'
 import Title from '../components/Title';
 
-const Clase = () =>
+const InicioScreen = () =>
 {
     return(
         <React.Fragment>
@@ -10,4 +10,4 @@ const Clase = () =>
     );
 }
 
-export default Clase
+export default InicioScreen
