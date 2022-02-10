@@ -1,0 +1,10 @@
+input
+{
+    width: 100%;
+    background: lighten($color: $primary, $amount: 4);
+    border-radius: 4px;
+    height: 30px;  
+    margin: 2px 30px 0px 10px;   
+    transition: .3 ease all;
+    border: 3px solid transparent;
+}
