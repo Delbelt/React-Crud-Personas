@@ -1,0 +1,6 @@
+//Afectara a todos los componentes
+
+body
+{
+    background-color: lighten($color: $secondary, $amount: 63)
+}
