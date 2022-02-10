@@ -1,0 +1,20 @@
+//Configuracion de las tablas
+
+.tabla
+{
+    text-align: center;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: lighten($color: $secondary, $amount: 63);
+
+    thead
+    {
+        font-size: 20px;        
+    }
+
+    tr
+    {
+        font-size: 15px;        
+    }
+}

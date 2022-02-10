@@ -1,0 +1,52 @@
+//Configuracion del NavBar
+
+ul
+{
+    list-style: none;
+    background-color: darken($color: $dark, $amount: 3);;
+    padding: 0px;
+    margin: 0px;
+    border: 0px solid;
+
+    p //Titulo
+    {
+    display: inline-block;
+    padding: 14px;    
+    margin: 0px;
+    margin-right: 55px;
+    border: 0px solid;
+    background-color: black;
+    color: aliceblue;             
+    }
+
+    li //Link
+    {
+    display: inline-block;    
+    padding: 10px;
+    margin: 15px 7px;
+    border: 0px solid;
+    background-color: black;
+    color: $white;
+
+    &:hover
+    {
+        //background-color: darken($color: $primary, $amount: 5);
+        background-color: black;
+        box-shadow: 5px 5px 6px 1px rgb(7, 134, 184);
+        text-decoration: none
+    }
+        a //Links Click
+        {
+            text-decoration: none;
+            font-size: 1rem;
+            color: $white;
+
+            &:hover
+            {
+                //text-decoration: underline;
+                text-decoration: none;
+                color: lighten($color: $secondary, $amount: 30)
+            }
+        } //A
+    } //LI
+} //UL
