@@ -15,37 +15,35 @@ ul
     margin: 0px;
     margin-right: 55px;
     border: 0px solid;
-    background-color: black;
-    color: aliceblue;             
+    background-color: darken($color: $dark, $amount: 15);
+    color: $white;             
     }
 
-    li //Link
+    li //Box de los links
     {
     display: inline-block;    
     padding: 10px;
     margin: 15px 7px;
     border: 0px solid;
-    background-color: black;
-    color: $white;
+    background-color: darken($color: $dark, $amount: 15);
 
     &:hover
-    {
-        //background-color: darken($color: $primary, $amount: 5);
-        background-color: black;
-        box-shadow: 5px 5px 6px 1px rgb(7, 134, 184);
+    {        
+        box-shadow: 3px 3px 4px 1px rgb(7, 134, 184);
         text-decoration: none
     }
-        a //Links Click
+        a //Links
         {
             text-decoration: none;
             font-size: 1rem;
+            color: darken($color: $white, $amount: 10);
             color: $white;
 
-            &:hover
+            &:hover //Link Hover
             {
                 //text-decoration: underline;
                 text-decoration: none;
-                color: lighten($color: $secondary, $amount: 30)
+                color: darken($color: $white, $amount: 10)                
             }
         } //A
     } //LI
