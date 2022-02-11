@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Input = ({tipo, label, placeholder, name, error}) =>
+const Input = ({tipo, label, placeholder, name, error, handle, value}) =>
 {
     return(
         <React.Fragment>            
             <label htmlFor={name}>{label}</label>
-            <input autoComplete='off' type={tipo} placeholder={placeholder} id={name}/>
+            <input onChange={handle} value={value} autoComplete='off' type={tipo} placeholder={placeholder} name={name}/>
             <p>{error}</p>
         </React.Fragment>
     );
