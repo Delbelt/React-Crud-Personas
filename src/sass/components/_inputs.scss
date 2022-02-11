@@ -1,6 +1,7 @@
 input
 {
     width: 100%;
+    max-width: 300px;
     background: lighten($color: $primary, $amount: 4);
     border-radius: 4px;
     height: 30px;  
