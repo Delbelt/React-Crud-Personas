@@ -36,16 +36,12 @@ const usePersona = (dispatch, ultimoId) =>
         })
     }; 
 
-    const handleAdd = () => //Agrega un contacto
+    const handleAdd = (evento) => //Agrega un contacto
     {
-        if(nombre !== "" || dni !== "")
-        {
+        evento.preventDefault();
+
             if(expresiones.nombre.test(nombre) && expresiones.dni.test(dni))
             {
-            dispatch(agregarPersona(ultimoId, nombre, dni)); 
-            //No es necesario decirle cual es su reducer, todos los dispatch
-            //van a tener referencia directa con su Reducer
-            setDatos({nombre:"", dni:""}); //Borro los datos del input
 
             swal(
                 {
@@ -61,6 +57,10 @@ const usePersona = (dispatch, ultimoId) =>
             {
                 if (accion)
                 {
+                    dispatch(agregarPersona(ultimoId, nombre, dni)); 
+                    //No es necesario decirle cual es su reducer, todos los dispatch
+                    //van a tener referencia directa con su Reducer
+                    setDatos({nombre:"", dni:""}); //Borro los datos del input
                     swal('Completado!', 'Cliente creado correctamente', 'success');
                 }
                 else
@@ -69,8 +69,7 @@ const usePersona = (dispatch, ultimoId) =>
                 }
             })
            
-            }            
-        }
+            }             
 
         else
         {            
