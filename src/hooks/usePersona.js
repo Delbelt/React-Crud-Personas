@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import swal from 'sweetalert';
-import { agregarCliente, editarCliente, eliminarCliente } from '../actions/abmClientes';
+import { agregarPersona, editarPersona, eliminarPersona } from '../actions/personaCRUD';
 
 const usePersona = (dispatch, ultimoId) =>
 {
@@ -42,7 +42,7 @@ const usePersona = (dispatch, ultimoId) =>
         {
             if(expresiones.nombre.test(nombre) && expresiones.dni.test(dni))
             {
-            dispatch(agregarCliente(ultimoId, nombre, dni)); 
+            dispatch(agregarPersona(ultimoId, nombre, dni)); 
             //No es necesario decirle cual es su reducer, todos los dispatch
             //van a tener referencia directa con su Reducer
             setDatos({nombre:"", dni:""}); //Borro los datos del input
@@ -84,7 +84,7 @@ const usePersona = (dispatch, ultimoId) =>
 
         if(expresiones.nombre.test(evento.target[1].value) && expresiones.dni.test(evento.target[2].value))
         {
-            dispatch(editarCliente(evento.target[0].value, evento.target[1].value, evento.target[2].value));
+            dispatch(editarPersona(evento.target[0].value, evento.target[1].value, evento.target[2].value));
             swal(
                 {
                     title: "Estas seguro?",
@@ -123,7 +123,7 @@ const usePersona = (dispatch, ultimoId) =>
     
     const handleDelete = (id) => //Elimina un contacto por id
     {
-        dispatch(eliminarCliente(id));
+        dispatch(eliminarPersona(id));
     };
 
     return {id, nombre, dni, handleFind, handleChange, handleEdit, handleDelete, handleAdd};
