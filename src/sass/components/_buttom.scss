@@ -1,0 +1,89 @@
+.btn
+{
+    background-color: $white;
+    color: $dark;
+    font-size: 1rem;
+    border: solid 1px $dark;
+    border-radius: 6px;
+    margin: 10px;
+    padding: 5px;
+
+    &:hover
+    {
+        cursor: pointer;            
+    }
+//**********************************************************************
+    &.btn-primary
+    {
+        background-color: $primary;
+        color: $white;
+
+        &:hover
+        {
+            background-color: darken($color: $primary, $amount: 10);    
+        }
+    }
+//**********************************************************************
+    &.btn-secondary
+    {
+        background-color: $secondary;
+        color: $white;
+
+        &:hover
+        {
+            background-color: darken($color: $secondary, $amount: 10);    
+        }
+    }
+
+    &.btn-delete
+    {
+        background-color: darken($color: $primary, $amount: 6);
+        color: darken($color: $white, $amount: 2);
+
+        &:hover
+        {
+            background-color: darken($color: $primary, $amount: 15);    
+        }
+    }
+
+    &.btn-edit
+    {
+        background-color: darken($color: green, $amount: 5);
+        color: darken($color: $white, $amount: 2);
+        margin-top: 15px;
+        width: 100px;
+        padding: 5px;
+
+        &:hover
+        {
+            background-color: darken($color: green, $amount: 12);    
+        }
+    }
+
+    &.btn-find
+    {
+        background-color: darken($color: $secondary, $amount: 5);
+        color: darken($color: $white, $amount: 2);
+        margin: auto;
+        margin-top: 15px;        
+        padding: 5px;        
+
+        &:hover
+        {
+            background-color: darken($color: $secondary, $amount: 12);    
+        }
+    }
+
+    &.btn-form
+    {
+        background-color: darken($color: $secondary, $amount: 5);
+        color: darken($color: $white, $amount: 2);   
+        padding: 4px;
+        margin: autos;
+      
+        &:hover
+        {
+            background-color: darken($color: $secondary, $amount: 12);    
+        }
+    }
+}
