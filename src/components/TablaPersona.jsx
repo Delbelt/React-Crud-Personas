@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import PersonaContext from '../context/PersonaContext';
 import usePersona from '../hooks/usePersona';
+import PropTypes from "prop-types";
 
 const TablaPersona = ({data}) =>
 {
@@ -12,9 +13,9 @@ const TablaPersona = ({data}) =>
         <table className='tabla'>
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Nombre</th> 
-                    <th>Dni</th>                                                                                      
+                    <th>{data.length ? "ID" : ""}</th>
+                    <th>{data.length ? "Nombre" : ""}</th> 
+                    <th>{data.length ? "Dni" : ""}</th>                                                                                      
                 </tr>
             </thead>
             <tbody>                    
@@ -26,7 +27,7 @@ const TablaPersona = ({data}) =>
                         <td>{objeto.id}</td> 
                         <td>{objeto.nombre}</td>
                         <td>{objeto.dni}</td>   
-                        <td><button onClick={() => handleDelete(objeto.id)}>Eliminar</button></td>                                                   
+                        <td><button onClick={() => handleDelete(objeto.id)} className='btn btn-delete'>Eliminar</button></td>                                                   
                     </tr>)
                 })
             }
@@ -36,5 +37,10 @@ const TablaPersona = ({data}) =>
     </React.Fragment>
     );
 }
+
+TablaPersona.propTypes =
+{
+    data : PropTypes.array, //Para garantizar que el props sea un Array
+};
 
 export default TablaPersona

@@ -14,13 +14,13 @@ const FormAdd = () =>
     return(
         <React.Fragment>
 
-            <form onSubmit={handleAdd}>
+            <form onSubmit={handleAdd} className='form-add'>
                 <div>
                     <Input handle={handleChange} value={nombre} tipo='text' label='Nombre' placeholder='Ingrese su nombre'
                     name='nombre' error='Solo puede ingresar letras'/>
                     <Input handle={handleChange} value={dni} tipo='text' label='Dni' placeholder='Ingrese su Dni'
                     name='dni' error='Solo puede ingresar 8 digitos'/>
-                    <button type='submit'>Agregar Persona</button>
+                    <button type='submit' className='btn btn-form'>Agregar Persona</button>
                 </div>                            
             </form>
             

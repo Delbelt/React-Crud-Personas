@@ -15,14 +15,14 @@ const BuscarScreen = () =>
     return(
         <React.Fragment>
             <Title titulo='Buscar Persona'/>
-            <form onSubmit={handleFind}>
+            <form onSubmit={handleFind} className='form-find'>
                 <label>                   
                     <input type="text" autoComplete='off' name="id"/>                                               
                 </label>
-                    <button type="submit">Buscar Cliente</button>                    
+                    <button type="submit" className='btn btn-find'>Buscar Cliente</button>                    
+                {id !== "" && <TablaPersona data={buscar} handleDelete={handleDelete}/>}
             </form>
 
-            {id !== "" && <TablaPersona data={buscar} handleDelete={handleDelete}/>}
             
         </React.Fragment>
     );
