@@ -126,8 +126,7 @@ const usePersona = (dispatch, ultimoId) =>
         evento.preventDefault();
 
         if(expresiones.nombre.test(evento.target[1].value) && expresiones.dni.test(evento.target[2].value))
-        {
-            dispatch(editarPersona(evento.target[0].value, evento.target[1].value, evento.target[2].value));
+        {            
             swal(
                 {
                     title: "Estas seguro?",
@@ -142,26 +141,60 @@ const usePersona = (dispatch, ultimoId) =>
             {
                 if (accion)
                 {
+                    dispatch(editarPersona(evento.target[0].value, evento.target[1].value, evento.target[2].value));
                     swal('Completado!', 'Cliente creado correctamente', 'success');
+                    setId("");
+                    setDatos({nombre:"", dni:""});
                 }
                 else
                 {
                     swal('Cancelado!', 'Accion Cancelada', 'warning');
                 }
-            })
-            setId("");
-            setDatos({nombre:"", dni:""});                    
-        }
-
-        else if (evento.target[1].value === "" && evento.target[2].value === "")
-        {           
-            swal('Error al editar', 'Tiene que completar todos los campos','error');
+            })                                
         }
 
         else
-        {
-            swal('Error al editar', 'El nombre o el dni no paso la validacion','error');
-        }
+            { 
+                if(evento.target[1].name === "nombre" && nombre !== "")
+                {
+                    if(!expresiones.nombre.test(nombre))
+                    {                       
+                        setValidacion({
+                            ...validacion,                           
+                            nombreV: false,                               
+                        })
+
+                    }
+                    else
+                    {                        
+                        setValidacion({  
+                            ...validacion,                         
+                            nombreV: true,                                           
+                        });                       
+                    }
+                }
+
+                if(evento.target[2].name === "dni" && dni !== "")
+                {
+                            
+                    if(!expresiones.dni.test(dni))
+                    {                
+                        setValidacion({
+                            ...validacion,
+                            dniV: false,               
+                        })
+                    }
+        
+                    else
+                    {                                         
+                        setValidacion({
+                            ...validacion,
+                            dniV: true,               
+                        });
+                    }   
+                }    
+            }        
+
     };
     
     const handleDelete = (id) => //Elimina un contacto por id
