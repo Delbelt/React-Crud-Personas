@@ -4,7 +4,13 @@ import { agregarPersona, editarPersona, eliminarPersona } from '../actions/perso
 
 const usePersona = (dispatch, ultimoId) =>
 {
+    const [id, setId] = useState("");
+
     const [datos, setDatos] = useState({nombre: '', dni: ''});
+    const {nombre, dni} = datos; //Destructuring para usarlos sin datos.nombre/dni 
+
+    const [validacion, setValidacion] = useState({nombreV: true, dniV: true});
+    const {nombreV, dniV} = validacion;    
     
     const expresiones = //Expresiones regulares
     {
@@ -12,10 +18,6 @@ const usePersona = (dispatch, ultimoId) =>
         nombre:/^[a-zA-Z]{2,15}/, //Solo letras {2 a 15 Letras}
         dni:/^\d{8}$/, //Solo 8 digitos para el DNI
     }
-
-    const {nombre, dni} = datos; //Destructuring para usarlos sin datos.nombre/dni 
-
-    const [id, setId] = useState("");
 
     const handleFind = (evento) =>
     {
@@ -29,19 +31,23 @@ const usePersona = (dispatch, ultimoId) =>
     
     const handleChange = (evento) =>
     {
-       setDatos({
-        ...datos,
-        [evento.target.name] : evento.target.value
-        //El nombre del input que se relacional nombre del state
-        })
-    }; 
+        setDatos({
+            ...datos,
+            [evento.target.name] : evento.target.value
+            //El nombre del input que se relacional nombre del state
+            });       
+    };
 
     const handleAdd = (evento) => //Agrega un contacto
-    {
+    {        
         evento.preventDefault();
 
             if(expresiones.nombre.test(nombre) && expresiones.dni.test(dni))
             {
+                setValidacion({
+                    nombreV: true,
+                    dniV: true,               
+                })                              
 
             swal(
                 {
@@ -53,6 +59,7 @@ const usePersona = (dispatch, ultimoId) =>
                     buttons: true,
                     dangerMode: true
                 }
+
             ).then((accion)=>
             {
                 if (accion)
@@ -69,12 +76,49 @@ const usePersona = (dispatch, ultimoId) =>
                 }
             })
            
-            }             
+            }
+        
+            else
+            { 
+                if(evento.target[0].name === "nombre" && nombre !== "")
+                {
+                    if(!expresiones.nombre.test(nombre))
+                    {                       
+                        setValidacion({
+                            ...validacion,                           
+                            nombreV: false,                               
+                        })
+                    }
+                    else
+                    {                        
+                        setValidacion({  
+                            ...validacion,                         
+                            nombreV: true,
+                                           
+                        });                        
+                    }
+                }
 
-        else
-        {            
-            swal('Error al agregar', 'Tiene que completar todos los campos','error');            
-        }             
+                if(evento.target[1].name === "dni" && dni !== "")
+                {
+                            
+                    if(!expresiones.dni.test(dni))
+                    {                
+                        setValidacion({
+                            ...validacion,
+                            dniV: false,               
+                        })
+                    }
+        
+                    else
+                    {                                         
+                        setValidacion({
+                            ...validacion,
+                            dniV: true,               
+                        });
+                    }   
+                }    
+            }        
     };
 
     const handleEdit = (evento) =>
@@ -125,7 +169,7 @@ const usePersona = (dispatch, ultimoId) =>
         dispatch(eliminarPersona(id));
     };
 
-    return {id, nombre, dni, handleFind, handleChange, handleEdit, handleDelete, handleAdd};
+    return {id, nombre, dni, handleFind, handleChange, handleEdit, handleDelete, handleAdd, nombreV, dniV};
 };
 
 export default usePersona;
