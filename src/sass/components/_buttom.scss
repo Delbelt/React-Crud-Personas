@@ -3,10 +3,11 @@
     background-color: $white;
     color: $dark;
     font-size: 1rem;
-    border: solid 1px $dark;
+    border: solid 0.1px $dark;
     border-radius: 6px;
     margin: 10px;
     padding: 5px;
+    font-size: 20px;
 
     &:hover
     {
@@ -37,12 +38,13 @@
 
     &.btn-delete
     {
-        background-color: darken($color: $primary, $amount: 6);
+        background-color: darken($color: $cancelar, $amount: 4);
         color: darken($color: $white, $amount: 2);
+        font-size: 20px;
 
         &:hover
         {
-            background-color: darken($color: $primary, $amount: 15);    
+            background-color: darken($color: $cancelar, $amount: 12);    
         }
     }
 
@@ -52,7 +54,7 @@
         color: darken($color: $white, $amount: 2);
         margin-top: 15px;
         width: 100px;
-        padding: 5px;
+        padding: 5px;        
 
         &:hover
         {
@@ -65,7 +67,7 @@
         background-color: darken($color: $secondary, $amount: 5);
         color: darken($color: $white, $amount: 2);
         margin: auto;
-        margin-top: 15px;        
+        margin: 20px 10px 20px 10px;        
         padding: 5px;        
 
         &:hover
@@ -76,10 +78,11 @@
 
     &.btn-form
     {
-        background-color: darken($color: $secondary, $amount: 5);
+        background-color: darken($color: $secondary, $amount: 1);
         color: darken($color: $white, $amount: 2);   
         padding: 4px;
-        margin: autos;
+        margin-top: 15px;
+        font-size: 20px;
       
         &:hover
         {

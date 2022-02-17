@@ -8,12 +8,27 @@
     border-collapse: collapse;    
 
     thead
-    {
-        font-size: 20px;        
+    {      
+        tr
+        {            
+            
+            th
+            {
+                font-size: 25px;
+            }    
+        }        
     }
 
-    tr
+    tbody
     {
-        font-size: 15px;        
+        tr
+        {            
+            td
+            {
+                font-size: 25px;
+            }    
+        } 
     }
+
+
 }
