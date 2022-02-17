@@ -2,7 +2,7 @@
   "name": "crud-personas",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://delbelt.github.io/React-Crud-Personas/",
+  "homepage": "http://delbelt.github.io/React-Crud-Personas",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^11.2.7",
