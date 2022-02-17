@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/React-Crud-Personas/static/css/main.b9d14713.css",
+    "main.js": "/React-Crud-Personas/static/js/main.2618d317.js",
+    "static/js/377.16a2a0e6.chunk.js": "/React-Crud-Personas/static/js/377.16a2a0e6.chunk.js",
+    "service-worker.js": "/React-Crud-Personas/service-worker.js",
+    "index.html": "/React-Crud-Personas/index.html",
+    "main.b9d14713.css.map": "/React-Crud-Personas/static/css/main.b9d14713.css.map",
+    "main.2618d317.js.map": "/React-Crud-Personas/static/js/main.2618d317.js.map",
+    "377.16a2a0e6.chunk.js.map": "/React-Crud-Personas/static/js/377.16a2a0e6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b9d14713.css",
+    "static/js/main.2618d317.js"
+  ]
+}
