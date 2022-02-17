@@ -4,19 +4,23 @@ import { agregarPersona, editarPersona, eliminarPersona } from '../actions/perso
 
 const usePersona = (dispatch, ultimoId) =>
 {
-    const [id, setId] = useState("");
+    const [id, setId] = useState(""); // Id de las personas
 
     const [datos, setDatos] = useState({nombre: '', dni: ''});
     const {nombre, dni} = datos; //Destructuring para usarlos sin datos.nombre/dni 
 
     const [validacion, setValidacion] = useState({nombreV: true, dniV: true});
-    const {nombreV, dniV} = validacion;    
+    const {nombreV, dniV} = validacion; //Muestra los Errores de las validaciones    
     
     const expresiones = //Expresiones regulares
     {
         iud: /^\d{1,10}$/, //Solo numeros {1 a 10 digitos}
-        nombre:/^[a-zA-Z]{2,15}/, //Solo letras {2 a 15 Letras}
+        nombre:/^\D[a-z-A-Z]{2,15}$/, //Solo letras {2 a 15 Letras}
         dni:/^\d{8}$/, //Solo 8 digitos para el DNI
+
+        // \D = NO numeros
+        // \d = SOLO numeros
+        // $ Coincide con el final de la entrada
     }
 
     const handleFind = (evento) =>
@@ -38,7 +42,7 @@ const usePersona = (dispatch, ultimoId) =>
             });       
     };
 
-    const handleAdd = (evento) => //Agrega un contacto
+    const handleAdd = (evento) => //Agrega una persona
     {        
         evento.preventDefault();
 
@@ -59,31 +63,30 @@ const usePersona = (dispatch, ultimoId) =>
                     buttons: true,
                     dangerMode: true
                 }
-
-            ).then((accion)=>
-            {
-                if (accion)
+                ).then((accion)=>
                 {
-                    dispatch(agregarPersona(ultimoId, nombre, dni)); 
-                    //No es necesario decirle cual es su reducer, todos los dispatch
-                    //van a tener referencia directa con su Reducer
-                    setDatos({nombre:"", dni:""}); //Borro los datos del input
-                    swal('Completado!', 'Cliente creado correctamente', 'success');
-                }
-                else
-                {
-                    swal('Cancelado!', 'Accion Cancelada', 'warning');
-                }
-            })
-           
+                    if (accion)
+                    {
+                        dispatch(agregarPersona(ultimoId, nombre, dni)); 
+                        //No es necesario decirle cual es su reducer, todos los dispatch
+                        //van a tener referencia directa con su Reducer
+                        setDatos({nombre:"", dni:""}); //Borro los datos del input
+                        swal('Completado!', 'Cliente creado correctamente', 'success');
+                    }
+                    else
+                    {
+                        swal('Cancelado!', 'Accion Cancelada', 'warning');
+                    }
+                });           
             }
         
             else
             { 
                 if(evento.target[0].name === "nombre" && nombre !== "")
                 {
+                    
                     if(!expresiones.nombre.test(nombre))
-                    {                       
+                    {                                              
                         setValidacion({
                             ...validacion,                           
                             nombreV: false,                               
